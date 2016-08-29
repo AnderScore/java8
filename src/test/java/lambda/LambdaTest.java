@@ -2,21 +2,22 @@ package lambda;
 
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static org.junit.Assert.assertEquals;
+import java.util.concurrent.*;
 
 public class LambdaTest {
 
     @Test
     public void lambda() {
-        List<String> fruits = Arrays.asList("strawberry", "apple", "blueberry");
+        new FutureTask<String>(new Callable<String>() {
+            @Override
+            public String call() throws Exception {
+                return null;
+            }
+        });
 
-        List<String> aFruits = fruits.stream().filter(f -> f.contains("a")).collect(Collectors.toList());
-
-        assertEquals("strawberry,apple", String.join(",", aFruits));
+        new FutureTask<String>(() -> {
+            return null;
+        });
     }
 
 }
