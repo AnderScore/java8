@@ -16,6 +16,6 @@ public class StreamTest {
 
         List<String> aFruits = fruits.stream().filter(f -> f.contains("a")).collect(Collectors.toList());
 
-        assertEquals("strawberry,apple", String.join(",", aFruits));
+        assertEquals("strawberry,apple", aFruits.stream().reduce((s1, s2) -> s1 + "," + s2).get());
     }
 }
