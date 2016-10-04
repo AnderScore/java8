@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 public class StreamTest {
 
     @Test
-    public void lambda() {
+    public void stream() {
         List<String> fruits = Arrays.asList("strawberry", "apple", "blueberry");
 
         List<String> aFruits = fruits.stream().filter(f -> f.contains("a")).collect(Collectors.toList());
