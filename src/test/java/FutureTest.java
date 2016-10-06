@@ -46,6 +46,16 @@ public class FutureTest {
         assertTrue(result.isDone());
     }
 
+    @Test
+    public void composableFuture() throws Exception {
 
-
+        CompletableFuture.supplyAsync(() -> {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException ie) { }
+            return "logrun";
+        }).thenAccept((String res) -> {
+            assertEquals("logrun", res);
+        }).get(); //Get for jUnit to work
+    }
 }
