@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.time.*;
+import java.time.temporal.ChronoUnit;
 
 public class DateTest {
 
@@ -26,5 +27,11 @@ public class DateTest {
 
         Assert.assertEquals("2016-09-13T09:26:32+02:00", sthlm.toString());
         Assert.assertEquals("2016-09-13T08:26:32+01:00", london.toString());
+    }
+
+    @Test
+    public void duration() {
+        Duration duration = Duration.between(Instant.now(), Instant.now().plus(1, ChronoUnit.MINUTES));
+        Assert.assertEquals(60, duration.getSeconds());
     }
 }
